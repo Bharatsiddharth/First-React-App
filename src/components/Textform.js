@@ -23,13 +23,24 @@ export default function Textform(props) {
     }
 
     const handleReverse = ()=> {
-        console.log("hey everyone");
-        let str = text.split("");
-        str = str.reverse();
-        let newtext = str.join(""); 
-        settext(newtext)
+       let str = text.split("");
+       str = str.reverse();
+       let newstr = str.join("");
+       settext(newstr);
+
     }
-    
+
+    const handleCopy = ()=> {
+        var text = document.getElementById("myBox");
+        text.select();
+        navigator.clipboard.writeText(text.value);
+    }
+
+    const handleExtraspace = () => {
+        var newtext = text.split(/[ ]+/);
+        settext(newtext.join(" "))
+    }
+
 
     const Handlechange = (event)=> {
         console.log("On change")
@@ -49,7 +60,9 @@ export default function Textform(props) {
             <button className="btn btn-primary mx-2" onClick={handleUpClick}>Convert To Uppercase</button>
             <button className="btn btn-primary mx-2" onClick={handleloClick}>Convert To Lower case</button>
             <button className="btn btn-primary mx-2" onClick={handleclClick}>Clear Text</button>
-            <button className="btn btn-primary mx-2" onClick={handleReverse}>Bold</button>
+            <button className="btn btn-primary mx-2" onClick={handleReverse}>Revese Word</button>
+            <button className="btn btn-primary mx-2" onClick={handleCopy}>Copy</button>
+            <button className="btn btn-primary mx-2" onClick={handleExtraspace}>Remove Extra Space</button>
         </div>
 
         <div className="container">
