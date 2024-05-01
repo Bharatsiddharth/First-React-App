@@ -52,10 +52,10 @@ export default function Textform(props) {
 
   return (
    <>
-        <div className='container'>
+        <div className='container' style={{color: props.mode === 'dark'?'white' :'black'}}>
             <h2 className='my-4'>{props.heading}</h2>
-            <div className="mb-3">
-                <textarea className="form-control" value={text} onChange={Handlechange} id="myBox" rows="10"></textarea>
+            <div className="mb-3" >
+                <textarea className="form-control" value={text}  style={{backgroundColor:props.mode === 'dark'?'#00009c30' :'white', color: props.mode === 'dark'?'white' :'black'}} onChange={Handlechange} id="myBox" rows="10" ></textarea>
             </div>
             <button className="btn btn-primary mx-2" onClick={handleUpClick}>Convert To Uppercase</button>
             <button className="btn btn-primary mx-2" onClick={handleloClick}>Convert To Lower case</button>
@@ -65,12 +65,12 @@ export default function Textform(props) {
             <button className="btn btn-primary mx-2" onClick={handleExtraspace}>Remove Extra Space</button>
         </div>
 
-        <div className="container">
+        <div className="container" style={{color: props.mode === 'light'?'black' :'white'}}>
                 <h1>Your Text Summary</h1>
                 <p>{text.split(" ").length} Words and {text.length} Characters</p>
                 <p>{0.008 * text.split(" ").length} Minutes to read</p>
                 <h2>Preview</h2>
-                <p>{text}</p>
+                <p>{text.length>0?text:"Enter Something to priview"}</p>
         </div>
    </>
   )
