@@ -7,19 +7,22 @@ export default function Textform(props) {
     const handleUpClick = ()=> {
         console.log("hey everyone");
         let newText = text.toUpperCase();
-        settext(newText)
+        settext(newText);
+        props.showAlert("converted to uppercase", "success");
     }
 
     const handleloClick = ()=> {
         console.log("hey everyone");
         let newText = text.toLowerCase();
         settext(newText)
+        props.showAlert("converted to lower", "success");
     }
 
     const handleclClick = ()=> {
         console.log("hey everyone");
         let newText = "";
         settext(newText)
+        props.showAlert("Clear text", "success");
     }
 
     const handleReverse = ()=> {
@@ -27,6 +30,7 @@ export default function Textform(props) {
        str = str.reverse();
        let newstr = str.join("");
        settext(newstr);
+       props.showAlert("Reverse Word ", "success");
 
     }
 
@@ -34,11 +38,13 @@ export default function Textform(props) {
         var text = document.getElementById("myBox");
         text.select();
         navigator.clipboard.writeText(text.value);
+        props.showAlert("Copy to clipboard", "success");
     }
 
     const handleExtraspace = () => {
         var newtext = text.split(/[ ]+/);
         settext(newtext.join(" "))
+        props.showAlert("Extra space remove", "success");
     }
 
 
@@ -55,7 +61,7 @@ export default function Textform(props) {
         <div className='container' style={{color: props.mode === 'dark'?'white' :'black'}}>
             <h2 className='my-4'>{props.heading}</h2>
             <div className="mb-3" >
-                <textarea className="form-control" value={text}  style={{backgroundColor:props.mode === 'dark'?'#00009c30' :'white', color: props.mode === 'dark'?'white' :'black'}} onChange={Handlechange} id="myBox" rows="10" ></textarea>
+                <textarea className="form-control" value={text}  style={{backgroundColor:props.mode === 'dark'?'#929090' :'white', color: props.mode === 'dark'?'white' :'black'}} onChange={Handlechange} id="myBox" rows="10" ></textarea>
             </div>
             <button className="btn btn-primary mx-2" onClick={handleUpClick}>Convert To Uppercase</button>
             <button className="btn btn-primary mx-2" onClick={handleloClick}>Convert To Lower case</button>
@@ -67,7 +73,7 @@ export default function Textform(props) {
 
         <div className="container" style={{color: props.mode === 'light'?'black' :'white'}}>
                 <h1>Your Text Summary</h1>
-                <p>{text.split(" ").length} Words and {text.length} Characters</p>
+                <p>{text.trim().split(/\S+/).length - 1} Words and {text.length} Characters</p>
                 <p>{0.008 * text.split(" ").length} Minutes to read</p>
                 <h2>Preview</h2>
                 <p>{text.length>0?text:"Enter Something to priview"}</p>
