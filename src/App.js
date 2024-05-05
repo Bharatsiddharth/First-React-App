@@ -25,10 +25,18 @@ function App() {
       setMode('dark');
       document.body.style.backgroundColor = ' #13135c';
       showAlert("Dark mode has been enabled", "success");
+      document.title = 'Text utils - Dark mode';
+      // setInterval(() => {
+      //   document.title = "text util is amazing"
+      // }, 2000);
+      // setInterval(() => {
+      //   document.title = "text util install"
+      // }, 1500);
     }else{
       setMode('light');
       document.body.style.backgroundColor = 'white';
       showAlert("Light mode has been enabled", "success");
+      document.title = 'Text utils - light mode'
     }
   }
 
