@@ -1,79 +1,86 @@
 import React from 'react'
-import { useState } from 'react'
+// import { useState } from 'react'
 
-export default function About() {
+export default function About(props) {
 
-    const [mystyle, setMystyle] = useState(
-        {
-            color: 'black',
-            backgroundColor:"white"
-        }
-    );
+    // const [mystyle, setMystyle] = useState(
+    //     {
+    //         color: 'black',
+    //         backgroundColor:"white"
+    //     }
+    // );
 
-    const [btntext, setBtnText] = useState("Enable Dark Mode");
+    let mystyle = {
+        color:props.mode === 'dark'?'white':'#042743',
+        backgroundColor: props.mode === 'dark'?'#13135f':'white',
+        // border: '1px solid',
+        borderColor: props.mode === 'dark'?'white':'black',
+    }
+
+    // const [btntext, setBtnText] = useState("Enable Dark Mode");
     
 
-    const toogleStyle = ()=> {
-        if(mystyle.color === 'black'){
-            setMystyle({
-                color: 'white',
-                backgroundColor:"black"
-            }) 
-            setBtnText("Enable Light Mode")
-        } else{
-            setMystyle({
+    // const toogleStyle = ()=> {
+    //     if(mystyle.color === 'black'){
+    //         setMystyle({
+    //             color: 'white',
+    //             backgroundColor:"black"
+    //         }) 
+    //         setBtnText("Enable Light Mode")
+    //     } else{
+    //         setMystyle({
                 
-                    color: 'black',
-                    backgroundColor:"white"
+    //                 color: 'black',
+    //                 backgroundColor:"white"
                 
-            })
-            setBtnText("Enable Dark Mode")
-        }
-    }
+    //         })
+    //         setBtnText("Enable Dark Mode")
+    //     }
+    // }
     
 
   return (
-    <div className='container' style={mystyle}>
+    <div className='container' style={{color:props.mode === 'dark'?'white':'#042743'}}>
         <h1 className='my-3'>About Us</h1>
       <div className="accordion" id="accordionExample" style={mystyle}>
             <div className="accordion-item" style={mystyle}>
                 <h2 className="accordion-header" >
                 <button className="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne" style={mystyle}>
-                    Accordion Item #1
+                <strong>Analyze Your text</strong>
                 </button>
                 </h2>
                 <div id="collapseOne" className="accordion-collapse collapse show" data-bs-parent="#accordionExample">
                 <div className="accordion-body">
-                    <strong>This is the first item's accordion body.</strong> It is shown by default, until the collapse plugin adds the appropriate classes that we use to style each element. These classes control the overall appearance, as well as the showing and hiding via CSS transitions. You can modify any of this with custom CSS or overriding our default variables. It's also worth noting that just about any HTML can go within the <code>.accordion-body</code>, though the transition does limit overflow.
+                   Lorem ipsum dolor sit amet consectetur adipisicing elit. Quo laborum odit obcaecati cupiditate officia ex!
                 </div>
                 </div>
             </div>
             <div className="accordion-item" style={mystyle}>
                 <h2 className="accordion-header">
                 <button className="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" style={mystyle} aria-expanded="false" aria-controls="collapseTwo">
-                    Accordion Item #2
+                    <strong>Free to use</strong>
                 </button>
                 </h2>
                 <div id="collapseTwo" className="accordion-collapse collapse" data-bs-parent="#accordionExample" >
                 <div className="accordion-body" >
-                    <strong>This is the second item's accordion body.</strong> It is hidden by default, until the collapse plugin adds the appropriate classes that we use to style each element. These classes control the overall appearance, as well as the showing and hiding via CSS transitions. You can modify any of this with custom CSS or overriding our default variables. It's also worth noting that just about any HTML can go within the <code>.accordion-body</code>, though the transition does limit overflow.
+                    Lorem ipsum dolor sit amet consectetur, adipisicing elit. Quae praesentium consequatur deleniti expedita, eum dolorem! Dolorum amet error optio dicta, quidem quo vero odit cum, rerum delectus modi est fugit!
                 </div>
                 </div>
             </div>
             <div className="accordion-item" style={mystyle}>
                 <h2 className="accordion-header">
                 <button className="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" style={mystyle} aria-expanded="false" aria-controls="collapseThree">
-                    Accordion Item #3
+                    <strong>Browser compatable</strong>
                 </button>
                 </h2>
                 <div id="collapseThree" className="accordion-collapse collapse" data-bs-parent="#accordionExample">
                 <div className="accordion-body">
-                    <strong>This is the third item's accordion body.</strong> It is hidden by default, until the collapse plugin adds the appropriate classes that we use to style each element. These classes control the overall appearance, as well as the showing and hiding via CSS transitions. You can modify any of this with custom CSS or overriding our default variables. It's also worth noting that just about any HTML can go within the <code>.accordion-body</code>, though the transition does limit overflow.
+                    Lorem ipsum, dolor sit amet consectetur adipisicing elit. Praesentium, est.
                 </div>
                 </div>
             </div>
       </div>
-      <button onClick={toogleStyle}  type="button" className="btn btn-primary my-3">{btntext}</button>
+     
     </div>
   )
 }
